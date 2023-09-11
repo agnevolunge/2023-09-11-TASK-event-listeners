@@ -14,15 +14,14 @@ let numbersWrapper = document.querySelector('#numbers')
 let numberDisplay = document.createElement ('h3')
 let buttonMinus = document.createElement('button')
 let buttonPlus = document.createElement('button')
-let resetButton = document.createElement('button')
 
 
-numbersWrapper.append(numberDisplay, buttonMinus, buttonPlus, resetButton)
+numbersWrapper.append(numberDisplay, buttonMinus, buttonPlus)
 
 numberDisplay.textContent = 5
 buttonMinus.textContent = '-' 
 buttonPlus.textContent = '+'
-resetButton.textContent = 'reset'
+
 
 
 buttonMinus.addEventListener('click', function () {
@@ -57,13 +56,11 @@ buttonPlus.addEventListener('click', function () {
 
 
 function changeNumberColor () {
-    console.log('numberDisplay.textContent')
 
-    numberDisplay.textContent = 5
-
-    if (numberDisplay.textContent < 5) {
+    if (numberDisplay.textContent >= 5) {
         numberDisplay.style.color = 'green'
-    } else {
+    } 
+    if (numberDisplay.textContent < 5) {
         numberDisplay.style.color = 'red'
     }
 }
@@ -73,13 +70,21 @@ changeNumberColor()
 
 // 10. Sukurti naują mygtuką „Reset". Jį paspaudus viskas atstatoma į pradinę padėtį.
 
+let resetButton = document.createElement('button')
+resetButton.textContent = 'Reset'
+numbersWrapper.append(resetButton)
+
 resetButton.addEventListener('click', function()  {
  
- if (numberDisplay.textContent > 5 && numberDisplay.textContent < 5) {
+ if (resetButton.clicked == true) {
     numberDisplay.textContent = 5
 }
 })
- 
+
+
+// 11. Sukurti du naujus mygtukus, kurie:
+// 11.1. Prideda dvejetą prie esamos h3 elemento reikšmės.
+// 11.2. Atima dvejetą iš esamos h3 elemento reikšmės.
 
 
 
