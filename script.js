@@ -9,43 +9,116 @@
 // 7. Jeigu skaitmuo h3 komponente yra mažesnis už du, tai „-" mygtukas turėtų patapti neveiksnus (disabled)- element.setAttribute('disabled', true) / element.removeAttribute('disabled')
 // 8. Jeigu skaitmuo h3 komponente yra 10, tai „+" mygtukas turėtų patapti neveiksnus (disabled)
 
-let div = document.getElementById('numbers')
+let numbersWrapper = document.querySelector('#numbers')
 
-let h3 = document.createElement ('h3')
-h3.textContent = '5'
-
+let numberDisplay = document.createElement ('h3')
 let buttonMinus = document.createElement('button')
-buttonMinus.textContent = '-' 
-
 let buttonPlus = document.createElement('button')
+
+numbersWrapper.append(numberDisplay, buttonMinus, buttonPlus,)
+
+numberDisplay.textContent = 5
+buttonMinus.textContent = '-' 
 buttonPlus.textContent = '+'
 
-div.append(h3, buttonMinus, buttonPlus)
 
 buttonMinus.addEventListener('click', function () {
-    h3.textContent--
+    
+    console.log('minus')
 
-    if (h3.textContent < 2) {
-    console.log(h3.textContent)
-    buttonMinus.setAttribute('disabled', true)
-    }
-
-    if (h3.textContent > 1) { 
-    console.log(h3.textContent)
-    buttonMinus.removeAttribute('disabled')
+    numberDisplay.textContent = Number(numberDisplay.textContent) - 1
+    
+    if (numberDisplay.textContent <= 1) {
+        buttonMinus.setAttribute('disabled', true)
+    } 
+    if (numberDisplay.textContent < 10) {
+        buttonPlus.removeAttribute ('disabled')
     }
 })
 
 buttonPlus.addEventListener('click', function () {
-    h3.textContent++
 
-    if (h3.textContent > 10) {
-    console.log(h3.textContent)
-    buttonPlus.setAttribute('disabled', true)
+    console.log('plus')
+
+    numberDisplay.textContent = Number(numberDisplay.textContent) + 1
+
+    if (numberDisplay.textContent >= 10) {
+        buttonPlus.setAttribute('disabled', true)
     }
-
-    if (h3.textContent > 1) { 
-    console.log(h3.textContent)
-    buttonPlus.removeAttribute('disabled')
+    if (numberDisplay.textContent >1) {
+        buttonMinus.removeAttribute('disabled')
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//NUMBERS
+
+// let num = 5
+// console.log(num)
+
+// console.log(num + 1)
+
+// console.log(num)
+
+// num = 6
+// console.log(num)
+
+// num = num +1 
+// console.log(num)
+
+// num += 1 // tas pats kas num = num + 1
+// console.log(num)
+
+// num++ // kai nori prie dabartinio kintamojo prideti 1
+// console.log(num)
+
+// num = num - 1
+
+// num -= 1
+
+// num-- // kai nori prie dabartinio kintamojo prideti 1
+
+// num = num * 2
+
+// num *= 2
+
+// num /= 2
+
+// //string 
+
+// let str = 'labas'
+// console.log(str)
+
+// console.log(str + 'vakaras')
+
+// console.log(str)
+
+// str = str + 'vakaras'
+
+// str += '.'
+
+// console.log(str)
+
+// str++ //ats NaN,nes stringas yra ne skaicius
