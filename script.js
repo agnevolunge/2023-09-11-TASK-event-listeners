@@ -17,6 +17,7 @@ let buttonMinus = document.createElement('button')
 let resetButton = document.createElement('button')
 let buttonPlus = document.createElement('button')
 let button2Plus = document.createElement('button')
+let input = document.createElement('input')
 
 
 numberDisplay.textContent = 5
@@ -26,15 +27,21 @@ resetButton.textContent = 'Reset'
 buttonPlus.textContent = '+'
 button2Plus.textContent = '+2'
 
+input.value = 5
+input.type = 'number'
+// input.setAttribute('type', 'number')
+input.min = 1
+input.max = 10
+
 numberDisplay.style.color = 'green'
 
 
-numbersWrapper.append(numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus)
+numbersWrapper.append(input, numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus)
 
 
 buttonMinus.addEventListener('click', function () {
-    
-    numberDisplay.textContent = Number(numberDisplay.textContent) - 1
+    numberDisplay.textContent = numberDisplay.textContent - 1
+    input.value = numberDisplay.textContent 
     
     if (numberDisplay.textContent <= 1) {
         buttonMinus.setAttribute('disabled', true)
@@ -47,12 +54,12 @@ buttonMinus.addEventListener('click', function () {
     } else {
         numberDisplay.style.color = 'red' 
     }
-    
 })
 
 button2Minus.addEventListener('click', function() {
     numberDisplay.textContent = numberDisplay.textContent - 2
-
+    input.value = numberDisplay.textContent 
+    
     if (numberDisplay.textContent <= 1) {
         buttonMinus.setAttribute('disabled', true)
       }
@@ -79,11 +86,9 @@ button2Minus.addEventListener('click', function() {
 
 
 buttonPlus.addEventListener('click', function () {
-
-    console.log('plus')
-
     numberDisplay.textContent = Number(numberDisplay.textContent) + 1
-
+    input.value = numberDisplay.textContent 
+    
     if (numberDisplay.textContent >= 10) {
         buttonPlus.setAttribute('disabled', true)
     }
@@ -99,7 +104,8 @@ buttonPlus.addEventListener('click', function () {
 
 button2Plus.addEventListener('click', function () {
     numberDisplay.textContent = Number(numberDisplay.textContent) + 2
-
+    input.value = numberDisplay.textContent 
+    
     if (numberDisplay.textContent >= 10) {
         buttonPlus.setAttribute('disabled', true)
       }
@@ -131,6 +137,7 @@ button2Plus.addEventListener('click', function () {
 
 resetButton.addEventListener('click', function()  {
     numberDisplay.textContent = 5
+    input.value = numberDisplay.textContent 
     numberDisplay.style.color = 'green'
 
     plusButton.removeAttribute('disabled')
@@ -148,12 +155,9 @@ resetButton.addEventListener('click', function()  {
 // 12. Sukurti input elementą (number tipo) ir jame įrašytą skaičių pridėti kaip h3 elemento tekstą.
 
 
-let input = document.createElement('input')
 
-input.value = 5
-input.type = 'number'
-input.min = 1
-input.max = 10
+
+
 
 
 
