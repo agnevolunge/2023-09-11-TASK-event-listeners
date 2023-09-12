@@ -12,20 +12,24 @@
 let numbersWrapper = document.querySelector('#numbers')
 
 let numberDisplay = document.createElement ('h3')
+let button2Minus = document.createElement ('button')
 let buttonMinus = document.createElement('button')
 let resetButton = document.createElement('button')
 let buttonPlus = document.createElement('button')
+let button2Plus = document.createElement('button')
 
 
 numberDisplay.textContent = 5
+button2Minus.textContent = '-2' 
 buttonMinus.textContent = '-' 
 resetButton.textContent = 'Reset'
 buttonPlus.textContent = '+'
+button2Plus.textContent = '+2'
 
 numberDisplay.style.color = 'green'
 
 
-numbersWrapper.append(numberDisplay, buttonMinus, resetButton, buttonPlus)
+numbersWrapper.append(numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus)
 
 
 buttonMinus.addEventListener('click', function () {
@@ -46,6 +50,34 @@ buttonMinus.addEventListener('click', function () {
     
 })
 
+button2Minus.addEventListener('click', function() {
+    numberDisplay.textContent = numberDisplay.textContent - 2
+
+    if (numberDisplay.textContent <= 1) {
+        buttonMinus.setAttribute('disabled', true)
+      }
+    
+      if (numberDisplay.textContent <= 2) {
+        button2Minus.setAttribute('disabled', true)
+      }
+    
+      if (numberDisplay.textContent < 10) {
+        buttonPlus.removeAttribute('disabled')
+      }
+      
+      if (numberDisplay.textContent < 9) {
+        button2Plus.removeAttribute('disabled')
+      }
+    
+      if (numberDisplay.textContent >= 5) {
+        numberDisplay.style.color = 'green'
+      } else {
+        numberDisplay.style.color = 'red'
+      }
+
+})
+
+
 buttonPlus.addEventListener('click', function () {
 
     console.log('plus')
@@ -63,6 +95,32 @@ buttonPlus.addEventListener('click', function () {
     } else {
         numberDisplay.style.color = 'red' 
     }
+})
+
+button2Plus.addEventListener('click', function () {
+    numberDisplay.textContent = Number(numberDisplay.textContent) + 2
+
+    if (numberDisplay.textContent >= 10) {
+        buttonPlus.setAttribute('disabled', true)
+      }
+    
+      if (numberDisplay.textContent >= 9) {
+        button2Plus.setAttribute('disabled', true)
+      }
+    
+      if (numberDisplay.textContent > 1) {
+        buttonMinus.removeAttribute('disabled')
+      }
+    
+      if (numberDisplay.textContent > 2) {
+        button2Minus.removeAttribute('disabled')
+      }
+    
+      if (numberDisplay.textContent >= 5) {
+        numberDisplay.style.color = 'green'
+      } else {
+        numberDisplay.style.color = 'red'
+      }
 })
 
 // 9. Jeigu skaitmuo yra 5 arba daugiau, tai jo spalva turėtų būti žalia. Kitu atveju - raudona.
