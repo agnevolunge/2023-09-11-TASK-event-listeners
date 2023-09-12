@@ -18,6 +18,9 @@ let resetButton = document.createElement('button')
 let buttonPlus = document.createElement('button')
 let button2Plus = document.createElement('button')
 let input = document.createElement('input')
+let h4 = document.createElement('h4')
+let scoreList = document.createElement('ul')
+let addScoreButton = document.createElement('button')
 
 
 numberDisplay.textContent = 5
@@ -26,6 +29,8 @@ buttonMinus.textContent = '-'
 resetButton.textContent = 'Reset'
 buttonPlus.textContent = '+'
 button2Plus.textContent = '+2'
+h4.textContent = 'Balai'
+addScoreButton.textContent = "Įrašyti balą"
 
 input.value = 5
 input.type = 'number'
@@ -36,7 +41,7 @@ input.max = 10
 numberDisplay.style.color = 'green'
 
 
-numbersWrapper.append(input, numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus)
+numbersWrapper.append(input, numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus, h4, scoreList, addScoreButton)
 
 
 buttonMinus.addEventListener('click', function () {
@@ -130,10 +135,7 @@ button2Plus.addEventListener('click', function () {
 })
 
 // 9. Jeigu skaitmuo yra 5 arba daugiau, tai jo spalva turėtų būti žalia. Kitu atveju - raudona.
-
-
 // 10. Sukurti naują mygtuką „Reset". Jį paspaudus viskas atstatoma į pradinę padėtį.
-
 
 resetButton.addEventListener('click', function()  {
     numberDisplay.textContent = 5
@@ -146,6 +148,25 @@ resetButton.addEventListener('click', function()  {
     minus2Button.removeAttribute('disabled')
 })
 
+addScoreButton.addEventListener ('click', function(){
+   
+    addScoreButton.textContent = numberDisplay.textContent
+
+    let scoreItem = document.createElement('li')
+    scoreList.prepend(scoreItem)
+    scoreItem.textContent = numberDisplay.textContent
+    scoreItem.style.color = numberDisplay.style.color
+
+    let deleteButton = document.createElement('button')
+    deleteButton.textContent = 'Delete all'
+   
+    deleteButton.addEventListener('click', function(){
+    scoreItem.remove()
+    })
+
+    scoreItem.append(deleteButton)
+})
+
 
 // 11. Sukurti du naujus mygtukus, kurie:
 // 11.1. Prideda dvejetą prie esamos h3 elemento reikšmės.
@@ -154,7 +175,14 @@ resetButton.addEventListener('click', function()  {
 
 // 12. Sukurti input elementą (number tipo) ir jame įrašytą skaičių pridėti kaip h3 elemento tekstą.
 
-
+// 13. Sukurti naują elementą (h4) ir jį pridėti į „numbers" elemento pabaigą.
+// 13.1. Šio elemento tekstas turėtų būti „Balai:"
+// 14. Sukurti naują elementą (ul) ir jį pridėti į „numbers" elemento pabaigą.
+// 14.1. Sukurti naują mygtuką, kurio teksta būtų „Įrašyti balą".
+// 14.2. Paspaudus šį mygtuką, reikia paimti reikšmę iš h3 elemento ir sukurti naują li elementą bei jį prepend'inti prie ul elemento.
+// 15. Į li elementą įrašytas balas turi būti tos pačios spalvos kaip ir h3 elemente.
+// 16.1. Sukurti mygtuką ir jį įdėti į li elementą.
+// 16.2. Paspaudus šį mygtuką, li elementas su balu turi būti ištrintas.  
 
 
 
