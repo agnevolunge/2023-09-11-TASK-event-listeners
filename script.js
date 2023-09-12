@@ -17,10 +17,11 @@ let buttonMinus = document.createElement('button')
 let resetButton = document.createElement('button')
 let buttonPlus = document.createElement('button')
 let button2Plus = document.createElement('button')
+let addScoreButton = document.createElement('button')
 let input = document.createElement('input')
 let h4 = document.createElement('h4')
 let scoreList = document.createElement('ul')
-let addScoreButton = document.createElement('button')
+
 
 
 numberDisplay.textContent = 5
@@ -30,7 +31,7 @@ resetButton.textContent = 'Reset'
 buttonPlus.textContent = '+'
 button2Plus.textContent = '+2'
 h4.textContent = 'Balai'
-addScoreButton.textContent = "Įrašyti balą"
+addScoreButton.textContent = "Add Score"
 
 input.value = 5
 input.type = 'number'
@@ -41,7 +42,7 @@ input.max = 10
 numberDisplay.style.color = 'green'
 
 
-numbersWrapper.append(input, numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus, h4, scoreList, addScoreButton)
+numbersWrapper.append(input, numberDisplay, button2Minus, buttonMinus, resetButton, buttonPlus, button2Plus, addScoreButton, h4, scoreList)
 
 
 buttonMinus.addEventListener('click', function () {
@@ -133,6 +134,9 @@ button2Plus.addEventListener('click', function () {
         numberDisplay.style.color = 'red'
       }
 })
+ input.addEventListener('input', function(){
+    numberDisplay.textContent = input.value 
+ })
 
 // 9. Jeigu skaitmuo yra 5 arba daugiau, tai jo spalva turėtų būti žalia. Kitu atveju - raudona.
 // 10. Sukurti naują mygtuką „Reset". Jį paspaudus viskas atstatoma į pradinę padėtį.
@@ -158,7 +162,7 @@ addScoreButton.addEventListener ('click', function(){
     scoreItem.style.color = numberDisplay.style.color
 
     let deleteButton = document.createElement('button')
-    deleteButton.textContent = 'Delete all'
+    deleteButton.textContent = 'X'
    
     deleteButton.addEventListener('click', function(){
     scoreItem.remove()
