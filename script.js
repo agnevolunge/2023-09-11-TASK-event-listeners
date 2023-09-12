@@ -13,21 +13,23 @@ let numbersWrapper = document.querySelector('#numbers')
 
 let numberDisplay = document.createElement ('h3')
 let buttonMinus = document.createElement('button')
+let resetButton = document.createElement('button')
 let buttonPlus = document.createElement('button')
 
 
-numbersWrapper.append(numberDisplay, buttonMinus, buttonPlus)
-
 numberDisplay.textContent = 5
 buttonMinus.textContent = '-' 
+resetButton.textContent = 'Reset'
 buttonPlus.textContent = '+'
 
+numberDisplay.style.color = 'green'
+
+
+numbersWrapper.append(numberDisplay, buttonMinus, resetButton, buttonPlus)
 
 
 buttonMinus.addEventListener('click', function () {
     
-    console.log('minus')
-
     numberDisplay.textContent = Number(numberDisplay.textContent) - 1
     
     if (numberDisplay.textContent <= 1) {
@@ -36,6 +38,12 @@ buttonMinus.addEventListener('click', function () {
     if (numberDisplay.textContent < 10) {
         buttonPlus.removeAttribute ('disabled')
     }
+    if (numberDisplay.textContent >= 5) {
+        numberDisplay.style.color = 'green' 
+    } else {
+        numberDisplay.style.color = 'red' 
+    }
+    
 })
 
 buttonPlus.addEventListener('click', function () {
@@ -50,35 +58,27 @@ buttonPlus.addEventListener('click', function () {
     if (numberDisplay.textContent >1) {
         buttonMinus.removeAttribute('disabled')
     }
+    if (numberDisplay.textContent >= 5) {
+        numberDisplay.style.color = 'green' 
+    } else {
+        numberDisplay.style.color = 'red' 
+    }
 })
 
 // 9. Jeigu skaitmuo yra 5 arba daugiau, tai jo spalva turėtų būti žalia. Kitu atveju - raudona.
 
 
-function changeNumberColor () {
-
-    if (numberDisplay.textContent >= 5) {
-        numberDisplay.style.color = 'green'
-    } 
-    if (numberDisplay.textContent < 5) {
-        numberDisplay.style.color = 'red'
-    }
-}
- 
-changeNumberColor()
-
-
 // 10. Sukurti naują mygtuką „Reset". Jį paspaudus viskas atstatoma į pradinę padėtį.
 
-let resetButton = document.createElement('button')
-resetButton.textContent = 'Reset'
-numbersWrapper.append(resetButton)
 
 resetButton.addEventListener('click', function()  {
- 
- if (resetButton.clicked == true) {
     numberDisplay.textContent = 5
-}
+    numberDisplay.style.color = 'green'
+
+    plusButton.removeAttribute('disabled')
+    plus2Button.removeAttribute('disabled')
+    minusButton.removeAttribute('disabled')
+    minus2Button.removeAttribute('disabled')
 })
 
 
@@ -87,11 +87,15 @@ resetButton.addEventListener('click', function()  {
 // 11.2. Atima dvejetą iš esamos h3 elemento reikšmės.
 
 
+// 12. Sukurti input elementą (number tipo) ir jame įrašytą skaičių pridėti kaip h3 elemento tekstą.
 
 
+let input = document.createElement('input')
 
-
-
+input.value = 5
+input.type = 'number'
+input.min = 1
+input.max = 10
 
 
 
