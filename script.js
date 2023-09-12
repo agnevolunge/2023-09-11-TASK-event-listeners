@@ -150,7 +150,7 @@ resetButton.addEventListener('click', function()  {
 
 addScoreButton.addEventListener ('click', function(){
    
-    addScoreButton.textContent = numberDisplay.textContent
+    // addScoreButton.textContent = numberDisplay.textContent
 
     let scoreItem = document.createElement('li')
     scoreList.prepend(scoreItem)
