@@ -90,7 +90,6 @@ button2Minus.addEventListener('click', function() {
 
 })
 
-
 buttonPlus.addEventListener('click', function () {
     numberDisplay.textContent = Number(numberDisplay.textContent) + 1
     input.value = numberDisplay.textContent 
@@ -233,7 +232,8 @@ addScoreButton.addEventListener ('click', function(){
 
 // num /= 2
 
-// //string 
+
+//string 
 
 // let str = 'labas'
 // console.log(str)
@@ -244,7 +244,7 @@ addScoreButton.addEventListener ('click', function(){
 
 // str = str + 'vakaras'
 
-// str += '.'
+// str += '.' (prie labas vakaras prideda taska. )
 
 // console.log(str)
 
